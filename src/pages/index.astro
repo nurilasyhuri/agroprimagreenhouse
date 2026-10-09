@@ -2,12 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/home/HeroSection.astro';
 import TrustBar from '../components/home/TrustBar.astro';
-import CategoryGrid from '../components/home/CategoryGrid.astro';
-import ValueHighlights from '../components/home/ValueHighlights.astro';
 import GreenhouseServiceHighlight from '../components/home/GreenhouseServiceHighlight.astro';
-import DualPathChooser from '../components/home/DualPathChooser.astro';
-import CustomerReviews from '../components/home/CustomerReviews.astro';
 import NationwideCoverage from '../components/home/NationwideCoverage.astro';
+import DualPathChooser from '../components/home/DualPathChooser.astro';
+import LocationSnippet from '../components/home/LocationSnippet.astro';
 import HomeBlogSection from '../components/home/HomeBlogSection.astro';
 import CtaBanner from '../components/home/CtaBanner.astro';
 import { getLocalBusinessSchema, getWebsiteSchema } from '../utils/seo';
@@ -41,28 +39,22 @@ const homeKeywords = [
   <!-- 2. Trust Strip (Contractor Quality Highlights) -->
   <TrustBar />
 
-  <!-- 3. Pilihan Tipe Konstruksi Greenhouse (4 Core Types Grid) -->
-  <CategoryGrid />
-
-  <!-- 4. Jasa Pembuatan Greenhouse (Technical Services & Types) -->
+  <!-- 3. Jasa Pembuatan Greenhouse (Technical Services & Types) -->
   <GreenhouseServiceHighlight />
 
-  <!-- 5. Mengapa Memilih Agro Prima Greenhouse? (5 Core Pillars) -->
-  <ValueHighlights />
-
-  <!-- 6. Melayani Pengiriman & Instalasi Greenhouse ke Seluruh Indonesia -->
+  <!-- 4. Melayani Pengiriman & Instalasi Greenhouse ke Seluruh Indonesia -->
   <NationwideCoverage />
 
-  <!-- 7. Pilihan Kebutuhan Proyek: Material Rangka atau Bangun Terima Jadi? -->
+  <!-- 5. Pilihan Kebutuhan Proyek: Material Rangka atau Bangun Terima Jadi? -->
   <DualPathChooser />
 
-  <!-- 8. Customer Reviews & Social Proof -->
-  <CustomerReviews />
+  <!-- 6. Workshop & Gudang Material Fisik Malang -->
+  <LocationSnippet />
 
-  <!-- 9. Panduan Konstruksi & Greenhouse (From the Blog) -->
+  <!-- 7. Panduan Konstruksi & Greenhouse (From the Blog) -->
   <HomeBlogSection />
 
-  <!-- 10. Konsultasikan Rancang Bangun Greenhouse Anda (WhatsApp CTA) -->
+  <!-- 8. Konsultasi Pembuatan Greenhouse (WhatsApp CTA) -->
   <CtaBanner />
 
 </BaseLayout>

@@ -1,6 +1,6 @@
 ---
 title: 'Jasa Pembuatan Greenhouse Melon Hidroponik: Standar Konstruksi & Estimasi Biaya'
-description: 'Panduan lengkap jasa pembuatan greenhouse melon hidroponik modern. Rancang bangun ventilasi tropis, atap plastik UV 200 mikron, beban gantung melon, dan rincian RAB per m2.'
+description: 'Panduan lengkap jasa pembuatan greenhouse melon hidroponik modern. Desain ventilasi tropis, atap plastik UV 200 mikron, beban gantung melon, dan rincian RAB per m2.'
 publishDate: '3 Oktober 2026'
 author: 'Tim Ahli Agro Prima Greenhouse'
 category: 'Konstruksi & Budidaya'
@@ -18,7 +18,7 @@ Sebagai kontraktor spesialis [jasa pembuatan greenhouse](/jasa/pembuatan-greenho
 
 ## 1. Tantangan Spesifik Konstruksi Greenhouse Melon Tropis
 
-Berbeda dengan greenhouse untuk sayuran daun hidroponik (seperti pakcoy atau selada), rancang bangun greenhouse melon membutuhkan perhitungan struktural khusus:
+Berbeda dengan greenhouse untuk sayuran daun hidroponik (seperti pakcoy atau selada), konstruksi greenhouse melon membutuhkan perhitungan struktural khusus:
 
 ### A. Kapasitas Beban Gantung (*Hanging Load*) yang Masif
 Pada sistem budidaya melon hidroponik substrat (*fertigasi dutch bucket* atau polybag), setiap tanaman umumnya dipelihara menghasilkan 1 buah berbobot 1,5 kg hingga 2,5 kg. Ditambah bobot biomassa batang, sulur, daun, dan tali gantung, sebuah greenhouse melon berkapasitas 2.000 populasi harus sanggup menopang **beban gantung statis dan dinamis sebesar 3,5 hingga 5 ton** di atas rangka atap.
@@ -53,7 +53,7 @@ Greenhouse melon modern tidak lengkap tanpa sistem irigasi nutrisi otomatis. Agr
 
 ## 4. Tabel Estimasi Biaya Pembuatan Greenhouse Melon per m²
 
-Berikut adalah acuan biaya investasi rancang bangun greenhouse melon hidroponik siap pakai:
+Berikut acuan estimasi biaya pembuatan greenhouse melon hidroponik siap pakai:
 
 | Tipe Struktur Rangka | Estimasi Biaya per m² | Usia Pakai Struktur | Rekomendasi Skala Usaha |
 | :--- | :--- | :--- | :--- |

@@ -54,7 +54,7 @@ Pemasangan instalasi pengairan seperti [Selang Drip Irigasi 16mm](/produk/selang
 
 Sebagai referensi nyata pelaksanaan di lapangan, Anda dapat meninjau dokumentasi proyek kami:
 - [Proyek Greenhouse Galvanis Komersial Batu Malang](/proyek/greenhouse-galvanis-batu-malang/) – Pembangunan greenhouse pipa galvanis seluas 400 m² untuk budidaya melon hidroponik sistem gantung.
-- [Proyek Tunnel Garam Pesisir Madura](/proyek/tunnel-garam-pesisir-madura/) – Rancang bangun prisma garam tahan korosi laut untuk kelompok tani garam.
+- [Proyek Tunnel Garam Pesisir Madura](/proyek/tunnel-garam-pesisir-madura/) – Pembangunan prisma garam tahan korosi laut untuk kelompok tani garam.
 
 
 ## 4. Cara Mengajukan Rencana Anggaran Biaya (RAB) Gratis

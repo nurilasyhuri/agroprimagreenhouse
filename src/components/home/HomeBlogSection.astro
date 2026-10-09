@@ -35,74 +35,54 @@ const latestArticles = articles
 
     <!-- 3 Article Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-      {latestArticles.map((art) => {
-        let cardTitle = art.data.title;
-        let cardDesc = art.data.description;
-        let ctaText = 'Baca Panduan Lengkap';
+      {latestArticles.map((art) => (
+        <article class="group rounded-xl bg-white border border-zinc-200/80 overflow-hidden hover:border-zinc-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <!-- Image with Zoom on Hover -->
+            <a href={`/artikel/${art.slug}/`} class="block aspect-[16/10] overflow-hidden bg-zinc-50">
+              <img
+                src={art.data.heroImage}
+                alt={art.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
 
-        if (art.slug.includes('biaya-pembuatan-greenhouse')) {
-          cardTitle = 'Berapa Biaya Pembuatan Greenhouse?';
-          cardDesc = 'Pelajari faktor yang memengaruhi biaya berdasarkan luas, rangka, material penutup, dan kebutuhan instalasi.';
-          ctaText = 'Panduan Biaya Greenhouse';
-        } else if (art.slug.includes('plastik-uv-dan-paranet')) {
-          cardTitle = 'Plastik UV atau Paranet?';
-          cardDesc = 'Kenali perbedaan fungsi keduanya sebelum menentukan material perlindungan tanaman.';
-          ctaText = 'Plastik UV vs Paranet';
-        } else if (art.slug.includes('tunnel-garam')) {
-          cardTitle = 'Bagaimana Membuat Tunnel Garam?';
-          cardDesc = 'Pelajari fungsi, struktur dasar, dan pertimbangan pembangunan tunnel untuk produksi garam.';
-          ctaText = 'Panduan Tunnel Garam';
-        }
-
-        return (
-          <article class="group rounded-xl bg-white border border-zinc-200/80 overflow-hidden hover:border-zinc-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between">
-            <div>
-              <!-- Image with Zoom on Hover -->
-              <a href={`/artikel/${art.slug}/`} class="block aspect-[16/10] overflow-hidden bg-zinc-50">
-                <img
-                  src={art.data.heroImage}
-                  alt={cardTitle}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-
-              <!-- Content Area -->
-              <div class="p-5">
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="text-[10px] font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full border border-sky-200/60 uppercase">
-                    {art.data.category}
-                  </span>
-                  <span class="text-[11px] font-medium text-zinc-400">
-                    &bull; {art.data.publishDate}
-                  </span>
-                </div>
-                <h3 class="text-base font-bold text-zinc-900 leading-snug group-hover:text-sky-600 transition-colors mb-2">
-                  <a href={`/artikel/${art.slug}/`}>
-                    {cardTitle}
-                  </a>
-                </h3>
-                <p class="text-xs text-zinc-600 leading-relaxed">
-                  {cardDesc}
-                </p>
+            <!-- Content Area -->
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-[10px] font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full border border-sky-200/60 uppercase">
+                  {art.data.category}
+                </span>
+                <span class="text-[11px] font-medium text-zinc-400">
+                  &bull; {art.data.publishDate}
+                </span>
               </div>
-            </div>
-
-            <div class="px-5 pb-5 pt-0">
-              <div class="pt-3 border-t border-zinc-100">
-                <a
-                  href={`/artikel/${art.slug}/`}
-                  class="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-600 group-hover:text-sky-700 transition-colors"
-                >
-                  <span>{ctaText}</span>
-                  <span aria-hidden="true">&rarr;</span>
+              <h3 class="text-base font-bold text-zinc-900 leading-snug group-hover:text-sky-600 transition-colors mb-2">
+                <a href={`/artikel/${art.slug}/`}>
+                  {art.data.title}
                 </a>
-              </div>
+              </h3>
+              <p class="text-xs text-zinc-600 leading-relaxed line-clamp-2">
+                {art.data.description}
+              </p>
             </div>
-          </article>
-        );
-      })}
+          </div>
+
+          <div class="px-5 pb-5 pt-0">
+            <div class="pt-3 border-t border-zinc-100">
+              <a
+                href={`/artikel/${art.slug}/`}
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-600 group-hover:text-sky-700 transition-colors"
+              >
+                <span>Baca Selengkapnya</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
     </div>
 
   </div>

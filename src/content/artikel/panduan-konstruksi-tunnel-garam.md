@@ -30,7 +30,7 @@ Membangun struktur di kawasan pesisir membutuhkan perhitungan khusus karena uap 
 
 - **Rangka Anti-Korosi Air Laut:** Menggunakan rangka pipa PVC tebal berkualitas tinggi atau pipa galvanis yang dilapisi pelindung anti-asam garam khusus agar struktur tidak rapuh setelah bertahun-tahun kontak dengan air asin.
 - **Plastik UV Transparansi Panas Maksimal:** Menggunakan [Plastik UV 200 Mikron](/produk/plastik-uv-greenhouse-14/) yang memiliki transmisi spektrum radiasi panas inframerah tinggi untuk mendorong kenaikan suhu ruangan di atas meja kristalisasi.
-- **Ventilasi Uap Air Terarah:** Rancang bangun atap lengkung dilengkapi celah sirkulasi agar uap air yang menguap dari meja garam dapat keluar dengan lancar tanpa menciptakan kondensasi berlebih yang menetes kembali ke garam.
+- **Ventilasi Uap Air Terarah:** Atap lengkung dilengkapi celah sirkulasi agar uap air yang menguap dari meja garam dapat keluar dengan lancar tanpa menciptakan kondensasi berlebih yang menetes kembali ke garam.
 - **Geomembrane Alas Meja Garam:** Bagian dasar dilapisi terpal plastik geomembrane HDPE hitam agar air garam tidak meresap ke tanah dan kristal garam dapat dipanen secara higienis.
 
 
@@ -40,7 +40,7 @@ Tim Agro Prima Greenhouse telah menyelesaikan pengerjaan fasilitas prisma garam 
 - [Portofolio Pembangunan Tunnel Garam Pesisir Madura](/proyek/tunnel-garam-pesisir-madura/) – Instalasi 10 unit tunnel garam rangka lengkung modular dengan sistem pembuangan uap terintegrasi.
 
 
-## 4. Konsultasi Rancang Bangun Fasilitas Garam
+## 4. Konsultasi Pembangunan Fasilitas Garam
 
 Jika kelompok tani, koperasi, atau perusahaan Anda merencanakan modernisasi fasilitas produksi garam meja kristalisasi:
 - Kami menyediakan suplai material khusus: plastik UV tahan asam garam, jaring pengaman, penjepit profil lock, dan geomembrane HDPE.

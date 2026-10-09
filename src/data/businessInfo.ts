@@ -4,7 +4,7 @@ export const BUSINESS_INFO = {
   tagline: 'Membangun Greenhouse Modern yang Lebih Kokoh, Presisi, dan Tahan Iklim Tropis.',
   positioning: 'Kontraktor Spesialis Jasa Pembuatan Greenhouse Berpengalaman',
   brandPillars: 'KONSTRUKSI • PROTEKSI • OTOMASI • IRIGASI',
-  description: 'Agro Prima Greenhouse adalah kontraktor spesialis jasa pembuatan greenhouse di Malang yang melayani survei, rancang bangun struktur galvanis, baja ringan, bambu, tunnel garam, instalasi irigasi, serta pengiriman material konstruksi ke seluruh Indonesia.',
+  description: 'Agro Prima Greenhouse adalah kontraktor spesialis jasa pembuatan greenhouse di Malang yang melayani survei lahan, konstruksi struktur pipa galvanis, baja ringan, bambu awet, tunnel garam, instalasi irigasi, serta pengiriman material ke seluruh Indonesia.',
   address: {
     street: 'Jl. KH. Malik Dalam RT 01 RW 07',
     village: 'Buring',
