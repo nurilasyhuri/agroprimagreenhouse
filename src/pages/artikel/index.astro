@@ -3,12 +3,55 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/common/Breadcrumb.astro';
 import { getCollectionPageSchema, getBreadcrumbSchema } from '../../utils/seo';
 import { getCollection } from 'astro:content';
-import { parseIndonesianDate } from '../../utils/date';
+import { formatIndonesianDate, parseIndonesianDate } from '../../utils/date';
+import { getPublishedArticles } from '../../db/queries';
 
-const articles = await getCollection('artikel');
-const sortedArticles = articles.sort(
-  (a, b) => parseIndonesianDate(b.data.publishDate).getTime() - parseIndonesianDate(a.data.publishDate).getTime()
-);
+export const prerender = false;
+
+// Edge cache: 60s max-age, 300s SWR
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
+
+// Fetch from Neon Postgres
+const dbArticles = await getPublishedArticles();
+
+let finalArticles: Array<{
+  slug: string;
+  title: string;
+  description: string;
+  category: string;
+  author: string;
+  publishDate: string;
+  heroImage: string;
+  body?: string;
+}> = [];
+
+if (dbArticles && dbArticles.length > 0) {
+  finalArticles = dbArticles.map((art) => ({
+    slug: art.slug,
+    title: art.title,
+    description: art.description,
+    category: art.category,
+    author: art.author,
+    publishDate: formatIndonesianDate(art.publishedAt || art.scheduledAt || art.createdAt),
+    heroImage: art.heroImage,
+    body: art.content,
+  }));
+} else {
+  // Fallback to static content collections if DB is not reachable
+  const contentArticles = await getCollection('artikel');
+  finalArticles = contentArticles
+    .sort((a, b) => parseIndonesianDate(b.data.publishDate).getTime() - parseIndonesianDate(a.data.publishDate).getTime())
+    .map((art) => ({
+      slug: art.slug,
+      title: art.data.title,
+      description: art.data.description,
+      category: art.data.category,
+      author: art.data.author,
+      publishDate: art.data.publishDate,
+      heroImage: art.data.heroImage,
+      body: art.body,
+    }));
+}
 
 function calculateReadingTime(text: string | undefined): string {
   if (!text) return '4 min read';
@@ -17,7 +60,7 @@ function calculateReadingTime(text: string | undefined): string {
   return `${minutes} min read`;
 }
 
-const categories = ['Semua', ...Array.from(new Set(sortedArticles.map((a) => a.data.category)))];
+const categories = ['Semua', ...Array.from(new Set(finalArticles.map((a) => a.category)))];
 
 const breadcrumbSchema = getBreadcrumbSchema([
   { name: 'Beranda', url: 'https://agroprimagreenhouse.com/' },
@@ -28,12 +71,13 @@ const collectionSchema = getCollectionPageSchema({
   name: 'Panduan Pertanian, Konstruksi Greenhouse & Irigasi',
   description: 'Artikel teknis praktisi agribisnis: estimasi biaya pembuatan greenhouse, perbandingan plastik UV vs paranet, konstruksi tunnel garam, dan instalasi fertigasi tetes.',
   url: 'https://agroprimagreenhouse.com/artikel/',
-  items: sortedArticles.map((art) => ({
-    name: art.data.title,
+  items: finalArticles.map((art) => ({
+    name: art.title,
     url: `https://agroprimagreenhouse.com/artikel/${art.slug}/`,
-    description: art.data.description,
+    description: art.description,
   })),
 });
+
 const articleListKeywords = [
   'panduan greenhouse',
   'biaya pembuatan greenhouse per m2',
@@ -88,13 +132,13 @@ const articleListKeywords = [
 
     <!-- Articles Feed (Clean Medium Story List - No HR / Lines) -->
     <div id="articles-feed" class="space-y-6 sm:space-y-8">
-      {sortedArticles.map((art, idx) => {
+      {finalArticles.map((art, idx) => {
         const readTime = calculateReadingTime(art.body);
         const isFirst = idx === 0;
 
         return (
           <article
-            data-category={art.data.category}
+            data-category={art.category}
             class="article-item group p-4 sm:p-6 -mx-4 sm:-mx-6 rounded-2xl hover:bg-zinc-50/90 transition-all duration-200"
           >
             <div class="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-8">
@@ -105,18 +149,18 @@ const articleListKeywords = [
                   <div class="w-6 h-6 rounded-full bg-[#0284c7] text-white flex items-center justify-center font-bold text-[10px] shrink-0">
                     AP
                   </div>
-                  <span class="font-medium text-zinc-800">{art.data.author}</span>
+                  <span class="font-medium text-zinc-800">{art.author}</span>
                   <span class="text-zinc-300">&bull;</span>
-                  <span>{art.data.publishDate}</span>
+                  <span>{art.publishDate}</span>
                 </div>
 
                 <!-- Title & Excerpt -->
                 <a href={`/artikel/${art.slug}/`} class="block group">
                   <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-zinc-900 group-hover:text-sky-600 transition-colors tracking-tight leading-snug">
-                    {art.data.title}
+                    {art.title}
                   </h2>
                   <p class="text-sm sm:text-base text-zinc-600 line-clamp-2 leading-relaxed mt-2 font-normal">
-                    {art.data.description}
+                    {art.description}
                   </p>
                 </a>
 
@@ -124,7 +168,7 @@ const articleListKeywords = [
                 <div class="flex items-center justify-between pt-2">
                   <div class="flex items-center gap-3">
                     <span class="inline-block text-xs font-medium px-3 py-1 rounded-full bg-zinc-100 text-zinc-700 group-hover:bg-sky-50 group-hover:text-sky-800 transition-colors">
-                      {art.data.category}
+                      {art.category}
                     </span>
                     <span class="text-xs text-zinc-400 font-medium">
                       {readTime}
@@ -147,8 +191,8 @@ const articleListKeywords = [
                 class="w-full sm:w-44 md:w-52 lg:w-60 aspect-[16/10] sm:aspect-[4/3] rounded-xl overflow-hidden bg-zinc-100 shrink-0 block"
               >
                 <img
-                  src={art.data.heroImage}
-                  alt={art.data.title}
+                  src={art.heroImage}
+                  alt={art.title}
                   width="360"
                   height="270"
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"

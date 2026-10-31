@@ -14,3 +14,6 @@ dist/
 Thumbs.db
 .vercel
 docx_extracted.txt
+.env*
+.agents/
+skills-lock.json
