@@ -13,6 +13,9 @@ Astro.response.headers.set('Cache-Control', 'public, s-maxage=60, stale-while-re
 
 // Fetch from Neon Postgres
 const dbArticles = await getPublishedArticles();
+const contentArticles = await getCollection('artikel');
+
+const dbSlugs = new Set((dbArticles || []).map((a) => a.slug));
 
 let finalArticles: Array<{
   slug: string;
@@ -26,22 +29,24 @@ let finalArticles: Array<{
 }> = [];
 
 if (dbArticles && dbArticles.length > 0) {
-  finalArticles = dbArticles.map((art) => ({
-    slug: art.slug,
-    title: art.title,
-    description: art.description,
-    category: art.category,
-    author: art.author,
-    publishDate: formatIndonesianDate(art.publishedAt || art.scheduledAt || art.createdAt),
-    heroImage: art.heroImage,
-    body: art.content,
-  }));
-} else {
-  // Fallback to static content collections if DB is not reachable
-  const contentArticles = await getCollection('artikel');
-  finalArticles = contentArticles
-    .sort((a, b) => parseIndonesianDate(b.data.publishDate).getTime() - parseIndonesianDate(a.data.publishDate).getTime())
-    .map((art) => ({
+  finalArticles.push(
+    ...dbArticles.map((art) => ({
+      slug: art.slug,
+      title: art.title,
+      description: art.description,
+      category: art.category,
+      author: art.author,
+      publishDate: formatIndonesianDate(art.publishedAt || art.scheduledAt || art.createdAt),
+      heroImage: art.heroImage,
+      body: art.content,
+    }))
+  );
+}
+
+if (contentArticles && contentArticles.length > 0) {
+  const missingFromDb = contentArticles.filter((art) => !dbSlugs.has(art.slug));
+  finalArticles.push(
+    ...missingFromDb.map((art) => ({
       slug: art.slug,
       title: art.data.title,
       description: art.data.description,
@@ -50,8 +55,15 @@ if (dbArticles && dbArticles.length > 0) {
       publishDate: art.data.publishDate,
       heroImage: art.data.heroImage,
       body: art.body,
-    }));
+    }))
+  );
 }
+
+finalArticles.sort(
+  (a, b) =>
+    parseIndonesianDate(b.publishDate).getTime() -
+    parseIndonesianDate(a.publishDate).getTime()
+);
 
 function calculateReadingTime(text: string | undefined): string {
   if (!text) return '4 min read';
