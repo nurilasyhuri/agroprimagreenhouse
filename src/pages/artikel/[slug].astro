@@ -270,16 +270,15 @@ const articleKeywords = [
         )}
       </div>
 
-      <!-- Tags Section (Medium Topic Badges) -->
+      <!-- Tags Strip (Inline Typographic Flow Invariant) -->
       {articleData.tags && articleData.tags.length > 0 && (
-        <div class="mt-14 mb-10">
-          <div class="flex flex-wrap gap-2">
-            {articleData.tags.map((tag: string) => (
-              <span class="px-3.5 py-1.5 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 text-xs font-medium transition-colors select-none">
-                {tag}
-              </span>
-            ))}
-          </div>
+        <div class="mt-8 mb-8 flex flex-wrap items-baseline gap-x-2.5 gap-y-1 text-xs text-zinc-600">
+          <span class="font-bold uppercase tracking-wider text-zinc-900">Tag:</span>
+          {articleData.tags.map((tag: string) => (
+            <span class="text-zinc-700 hover:underline underline-offset-4 cursor-pointer">
+              #{tag}
+            </span>
+          ))}
         </div>
       )}
 
